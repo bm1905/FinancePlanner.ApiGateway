@@ -1,0 +1,22 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/v1/Finance/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7012
+        }
+      ],
+      "ServiceName": "ApiAggregator",
+      "UpstreamPathTemplate": "/Finance/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE" ],
+      "FileCacheOptions": { "TtlSeconds": 0 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "openid", "profile", "email", "address", "roles", "WageServices", "FinanceServices", "TaxServices" ]
+      }
+    }
+  ]
+}
